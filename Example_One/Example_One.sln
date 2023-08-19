@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Introduce", "Introduce", "{46237344-D3A8-4CC4-8F35-CB360E7DCA59}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Example_One", "Example_One\Example_One.pyproj", "{CB873320-CF59-4A9F-A7E4-4BB7494E60C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB873320-CF59-4A9F-A7E4-4BB7494E60C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB873320-CF59-4A9F-A7E4-4BB7494E60C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CB873320-CF59-4A9F-A7E4-4BB7494E60C0} = {46237344-D3A8-4CC4-8F35-CB360E7DCA59}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FB4E75C-CEBF-4129-8913-0950A885C219}
+	EndGlobalSection
+EndGlobal
