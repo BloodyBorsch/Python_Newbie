@@ -13,7 +13,19 @@ class LessonOne:
     def DistanceCheck(distanceBetween, minDistance):       
         return(bool(distanceBetween > minDistance))    
     
-    print(DistanceCheck(distance, minDistanceBetween))  
+    #print(DistanceCheck(distance, minDistanceBetween))            
+
+class LessonTwo:
+    
+    count = 0
+    factorial = int(input())    
+    solution = 1
+
+    while count < factorial:
+        count += 1
+        solution *= count
+    else:
+        print(solution)
         
     
     
