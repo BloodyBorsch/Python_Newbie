@@ -27,15 +27,27 @@
 #     else:
 #         print(solution)
         
-class LessonThree:
+# class LessonThree:
     
-    massive = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+#     massive = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
     
-    # for elem in massive:
-    #     if elem < 5:
-    #         print(elem)
+#     for elem in massive:
+#         if elem < 5:
+#             print(elem)
            
-    print([elem for elem in massive if elem < 5])
+#     print([elem for elem in massive if elem < 5])
+    
+import enum
+
+class BotStatus(enum.Enum):
+    
+    FindTarget = 4
+    Inspection = 3
+    Moving = 2
+    Idle = 1
+    
+for element in BotStatus:
+    print(element.name, element.value)
         
     
     
