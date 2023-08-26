@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Introduce", "Introduce", "{
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Example_One", "Example_One\Example_One.pyproj", "{CB873320-CF59-4A9F-A7E4-4BB7494E60C0}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Homework_One", "..\Homework_One\Homework_One.pyproj", "{F98FFDFD-D26B-46C7-BE65-8FC11A814A9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,12 +17,15 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CB873320-CF59-4A9F-A7E4-4BB7494E60C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB873320-CF59-4A9F-A7E4-4BB7494E60C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98FFDFD-D26B-46C7-BE65-8FC11A814A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98FFDFD-D26B-46C7-BE65-8FC11A814A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CB873320-CF59-4A9F-A7E4-4BB7494E60C0} = {46237344-D3A8-4CC4-8F35-CB360E7DCA59}
+		{F98FFDFD-D26B-46C7-BE65-8FC11A814A9F} = {46237344-D3A8-4CC4-8F35-CB360E7DCA59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2FB4E75C-CEBF-4129-8913-0950A885C219}
