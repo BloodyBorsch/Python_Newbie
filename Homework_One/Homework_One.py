@@ -2,7 +2,7 @@ class HomeWork_One:
     import array
 
     mass = [1, 1, 2, 3, 5, 8, 13]
-    # разворачиваем массив командой reverse
+    # reversing of massive by using Reverse command
 
     mass.reverse()
     print(mass)
@@ -11,7 +11,7 @@ class HomeWork_One:
     newMassive = [None] * len(mass)
     print(newMassive)
 
-    # разворачиваем массив циклом
+    # reversing massive vith cycle
     while i < len(mass):
         i += 1
         newMassive[i - 1] = mass[len(mass) - i]
