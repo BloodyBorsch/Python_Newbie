@@ -14,7 +14,10 @@ class HomeWork_One:
     # разворачиваем массив циклом
     while i < len(mass):
         i += 1
-        print(mass[len(mass) - i])
+        newMassive[i - 1] = mass[len(mass) - i]
+        
+    mass = newMassive
+    print(mass)
 
 
 class HomeWork_Two:
