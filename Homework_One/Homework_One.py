@@ -62,3 +62,19 @@ class HomeWork_Two:
     print("Summ of all numbers", numbersBetween)
     numbersBetween = numbersBetween / len(mass)
     print("Arithmetic mean", int(numbersBetween))
+
+class HomeWork_Three:
+    
+    numbers = [2, 5, 13, 7, 6, 4]
+    size = 0
+    summ = 0
+    avg = 0
+    index = 0
+    
+    size = len(numbers)
+    while index < size:
+        summ += numbers[index]
+        index += 1
+    
+    avg = summ/size
+    print(int(avg))
