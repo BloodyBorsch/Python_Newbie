@@ -6,7 +6,7 @@ class LessonOne:
     secondFriendSpeed = 2
     dogSpeed = 5
     minDistanceBetween = 10
-    
+    #hiiiiiiii
     #boolDiscription = DistanceCheck(distance, minDistanceBetween)
     #print()
 
@@ -16,4 +16,5 @@ class LessonOne:
     def DistanceCheck(distanceBetween, minDistance):       
         return(bool(distanceBetween > minDistance))
     
+
     
