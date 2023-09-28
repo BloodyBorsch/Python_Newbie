@@ -9,7 +9,7 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Example_One", "Example_One\
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Homework_One", "..\Homework_One\Homework_One.pyproj", "{F98FFDFD-D26B-46C7-BE65-8FC11A814A9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example_Two", "Example_Two\Example_Two.csproj", "{07312AC8-F2B7-4C6D-BF48-9298E97D2349}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example_Two", "Example_Two\Example_Two.csproj", "{07312AC8-F2B7-4C6D-BF48-9298E97D2349}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
