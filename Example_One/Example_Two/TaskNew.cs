@@ -2,9 +2,12 @@
 {
     public static string[] coorditanes = { "x1: ", "y1: ", "z1: ", "x2: ", "y2: ", "z2: " }; // [] <- массив!
     public static int[] variables = new int[coorditanes.Length];
+    public static HomeWorks testOne = new TestOne();
 
     static void Main(string[] args)
-    {
+    {        
+        testOne.Start();
+
         for (int i = 0; i < coorditanes.Length; i++)
         {
             Console.Write(coorditanes[i]);
@@ -50,4 +53,22 @@ public enum DigitalNumbers
     X2,
     Y2,
     Z2
+}
+
+public class TestOne : HomeWorks
+{
+    public void Start()
+    {
+        Console.WriteLine($"Тестовый класс запущен");
+    }
+
+    public void WrongMethod()
+    {
+
+    }
+}
+
+public interface HomeWorks
+{
+    void Start();
 }
