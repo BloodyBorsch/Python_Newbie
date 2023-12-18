@@ -25,7 +25,7 @@ class MainController:
                 WorkFive.HomeworkFive.run(self)
                 
 
-CHOOSE_HOMEWORK_TO_RUN = 5 # Домашку выбирать тут, от 1 до 5
+CHOOSE_HOMEWORK_TO_RUN = 1 # Р”РѕРјР°С€РєСѓ РІС‹Р±РёСЂР°С‚СЊ С‚СѓС‚, РѕС‚ 1 РґРѕ 5
 
 controller = MainController()
 controller.run(WorkType(CHOOSE_HOMEWORK_TO_RUN))
