@@ -1,4 +1,9 @@
-import WorkOne, WorkTwo, WorkThree, WorkFour, WorkFive
+# import WorkOne, WorkTwo, WorkThree, WorkFour, WorkFive
+from WorkOne import HomeworkOne as work_one
+from WorkTwo import HomeworkTwo as work_two
+from WorkThree import HomeworkThree as work_three
+from WorkFour import HomeworkFour as work_four
+from WorkFive import HomeworkFive as work_five
 from enum import Enum
 
 
@@ -14,18 +19,18 @@ class MainController:
     def run(self, work):
         match work:
             case WorkType.firstWork:
-                WorkOne.HomeworkOne.run(self)
+                work_one.run(self)
             case WorkType.secondWork:
-                WorkTwo.HomeworkTwo.run(self)
+                work_two.run(self)
             case WorkType.thirdWork:
-                WorkThree.HomeworkThree.run(self)                
+                work_three.run(self)
             case WorkType.fourthWork:
-                WorkFour.HomeworkFour.run(self)                
+                work_four.run(self)
             case WorkType.fifthWork:
-                WorkFive.HomeworkFive.run(self)
-                
+                work_five.run(self)
 
-CHOOSE_HOMEWORK_TO_RUN = 1 # Домашку выбирать тут, от 1 до 5
+
+CHOOSE_HOMEWORK_TO_RUN = 1  # Домашку выбирать тут, от 1 до 5
 
 controller = MainController()
 controller.run(WorkType(CHOOSE_HOMEWORK_TO_RUN))
