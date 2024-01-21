@@ -1,34 +1,18 @@
-vowels = ("а", "у", "о", "ы", "и", "э", "я", "ю", "ё", "е")
-result = bool()
-vowels_list = list()
-# stroka = "пара-ра-Рам рам-Пам-папам Па-ра-па-дам"
-# stroka = "пара-ра-Рам"
-stroka = "по-русски говорят"
-stroka_list = stroka.split()
-stroka_list = list(map(lambda x: x.lower(), stroka_list))
+numbers_list = list()
 
 
-def Calculation():
-    result = True
+def print_operation_table(operation, num_rows, num_columns):
+    # list_one = [i + 1 for i in range(num_columns)]
+    # list_one = list(map(num_raise, range(num_columns)))
+    # columns = list(map(lambda x: x + 1, range(num_columns)))
+    numbers_list.append(list(map(lambda x: x + 1, range(num_columns))))
+    print(*numbers_list[0])
 
-    if len(stroka_list) <= 1:
-        return print(f"Количество фраз должно быть больше одной!")
-
-    for i in stroka_list:
-        vowels_list.append(list(filter(lambda x: x in vowels, i)))
-
-    print(stroka_list)
-    print(vowels_list)
-
-    for i in vowels_list:
-        if len(i) != len(vowels_list[0]):
-            result = False
-            break
-
-    if result:
-        return print(f"Парам пам-пам")
-    else:
-        return print(f"Пам парам")
+    for n in range(num_rows - 1):
+        numbers_list.append(
+            [operation(n + 2, numbers_list[0][i]) for i in range(num_columns)]
+        )
+        print(*numbers_list[n + 1])
 
 
-Calculation()
+print_operation_table(lambda x, y: x * y, 6, 6)
