@@ -1,36 +1,32 @@
-# import WorkOne, WorkTwo, WorkThree, WorkFour, WorkFive
-from WorkOne import HomeworkOne as work_one
-from WorkTwo import HomeworkTwo as work_two
-from WorkThree import HomeworkThree as work_three
-from WorkFour import HomeworkFour as work_four
-from WorkFive import HomeworkFive as work_five
-from enum import Enum
+from Functions import input_data, print_data, edit_data, erase_data
 
 
-class WorkType(Enum):
-    firstWork = 1
-    secondWork = 2
-    thirdWork = 3
-    fourthWork = 4
-    fifthWork = 5
+def work_with_data(number):
+    match number:
+        case 1:
+            input_data()
+        case 2:
+            print_data()
+        case 3:
+            edit_data()
+        case 4:
+            erase_data()
+        case _:
+            print(f"Число должно быть от 1 до 4")
+            work_with_data(int(input(f"Введите число: ")))
 
 
-class MainController:
-    def run(self, work):
-        match work:
-            case WorkType.firstWork:
-                work_one.run(self)
-            case WorkType.secondWork:
-                work_two.run(self)
-            case WorkType.thirdWork:
-                work_three.run(self)
-            case WorkType.fourthWork:
-                work_four.run(self)
-            case WorkType.fifthWork:
-                work_five.run(self)
+def interface():
+    print(
+        f"Добрый день! Вас приветствует бот справочник."
+        "\n 1 - Ввод данных "
+        "\n 2 - Вывод данных "
+        "\n 3 - Изменение данных "
+        "\n 4 - Очистка данных "
+    )
+    command = int(input(f"Введите число: "))
+    work_with_data(command)
 
 
-CHOOSE_HOMEWORK_TO_RUN = 1  # Домашку выбирать тут, от 1 до 5
-
-controller = MainController()
-controller.run(WorkType(CHOOSE_HOMEWORK_TO_RUN))
+if __name__ == "__main__":
+    interface()
