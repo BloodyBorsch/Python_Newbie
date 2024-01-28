@@ -7,9 +7,9 @@ def work_with_data(number):
             input_data()
         case 2:
             print_data()
-        case 3:
+        case 3:            
             edit_data()
-        case 4:
+        case 4:            
             erase_data()
         case _:
             print(f"Число должно быть от 1 до 4")
