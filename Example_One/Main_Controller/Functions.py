@@ -97,13 +97,7 @@ def edit_column_data():
 
     with open(path_to_first, "r", encoding="utf-8") as f:
         data_first = f.readlines()
-        # data_first_list = []
         data_first_list = list(data_first)
-        # j = 0
-        # for i in range(len(data_first)):
-        #     if data_first[i] == "\n" or i == len(data_first) - 1:
-        #         data_first_list.append(" ".join(data_first[j : i + 1]))
-        #         j = i
 
         data_empty_check(data_first_list)
 
@@ -141,7 +135,7 @@ def edit_rows_data():
                 temp_dict = input_data(False)
                 data_second_list[
                     i
-                ] = f"{temp_dict[Data_types.first_name]};{temp_dict[Data_types.second_name]};{temp_dict[Data_types.phone_number]};{temp_dict[Data_types.adress]}\n\n"
+                ] = f"{temp_dict[Data_types.first_name]}; {temp_dict[Data_types.second_name]}; {temp_dict[Data_types.phone_number]}; {temp_dict[Data_types.adress]}\n\n"
             else:
                 print(f"Нет такого телефона!")
                 edit_data()
@@ -174,7 +168,7 @@ def data_variant(Dtype, account):
         case 2:
             with open(path_to_second, "a", encoding="utf-8") as f:
                 f.write(
-                    f"{account[Data_types.first_name]};{account[Data_types.second_name]};{account[Data_types.phone_number]};{account[Data_types.adress]}\n\n"
+                    f"{account[Data_types.first_name]}; {account[Data_types.second_name]}; {account[Data_types.phone_number]}; {account[Data_types.adress]}\n\n"
                 )
         case _:
             print(f"Число должно быть 1 либо 2")
