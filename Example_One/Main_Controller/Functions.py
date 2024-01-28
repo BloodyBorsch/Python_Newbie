@@ -25,7 +25,7 @@ def input_data(new_data=True):
                 f"1 Вариант: \n"
                 f"{name}\n{surname}\n{phone}\n{adress}\n\n"
                 f"2 Вариант: \n"
-                f"{name};{surname};{phone};{adress}\n"
+                f"{name}; {surname}; {phone}; {adress}\n"
                 f"Выберите вариант: "
             )
         )
@@ -116,6 +116,7 @@ def edit_column_data():
         else:
             print(f"Нет такого телефона!")
             edit_data()
+
     with open(path_to_first, "w", encoding="utf-8") as f:
         [f.write(data_first_list[i]) for i in range(len(data_first_list))]
 
@@ -135,10 +136,8 @@ def edit_rows_data():
                 temp_dict = input_data(False)
                 data_second_list[
                     i
-                ] = f"{temp_dict[Data_types.first_name]}; {temp_dict[Data_types.second_name]}; {temp_dict[Data_types.phone_number]}; {temp_dict[Data_types.adress]}\n\n"
-            else:
-                print(f"Нет такого телефона!")
-                edit_data()
+                ] = f"{temp_dict[Data_types.first_name]}; {temp_dict[Data_types.second_name]}; {temp_dict[Data_types.phone_number]}; {temp_dict[Data_types.adress]}\n"
+
     with open(path_to_second, "w", encoding="utf-8") as f:
         [f.write(data_second_list[i]) for i in range(len(data_second_list))]
 
