@@ -1,10 +1,13 @@
 from enum import Enum
+import re
 
 path_to_first = "data_first_variant.csv"
 path_to_second = "data_second_variant.csv"
 
 
 def input_data(new_data=True):
+    print("Можно ввести * чтобы оставить поле без изменений")
+
     name = create_data(Data_types.first_name)
     surname = create_data(Data_types.second_name)
     phone = create_data(Data_types.phone_number)
@@ -82,12 +85,11 @@ def erase_data():
 
 
 def create_data(num):
-    # print("Введите / чтобы оставить поле без изменений")
     data = input(data_collector(num))
-    # if data == "/":
-    #     return
-    # else:
-    return data
+    if data == "*":
+        return
+    else:
+        return data
 
 
 def edit_column_data():
@@ -106,10 +108,14 @@ def edit_column_data():
                 number_find = True
                 print(f"Меняем данные в: {data_first_list[i - 2 : i + 2]}")
                 temp_dict = input_data(False)
-                data_first_list[i - 2] = f"{temp_dict[Data_types.first_name]}\n"
-                data_first_list[i - 1] = f"{temp_dict[Data_types.second_name]}\n"
-                data_first_list[i] = f"{temp_dict[Data_types.phone_number]}\n"
-                data_first_list[i + 1] = f"{temp_dict[Data_types.adress]}\n"
+                if temp_dict[Data_types.first_name] != None:
+                    data_first_list[i - 2] = f"{temp_dict[Data_types.first_name]}\n"
+                if temp_dict[Data_types.second_name] != None:
+                    data_first_list[i - 1] = f"{temp_dict[Data_types.second_name]}\n"
+                if temp_dict[Data_types.phone_number] != None:
+                    data_first_list[i] = f"{temp_dict[Data_types.phone_number]}\n"
+                if temp_dict[Data_types.adress] != None:
+                    data_first_list[i + 1] = f"{temp_dict[Data_types.adress]}\n"
 
         if number_find:
             print(" ".join(data_first_list))
@@ -133,10 +139,30 @@ def edit_rows_data():
         for i in range(len(data_second_list)):
             if what_to_edit in data_second_list[i]:
                 print(f"Меняем данные в: {data_second_list[i]}")
+
+                # temp_list = (data_second_list[i]).split(";")
+                temp_list = re.split(";| |\n", data_second_list[i])
+                [print(x) for x in temp_list]
+
                 temp_dict = input_data(False)
-                data_second_list[
-                    i
-                ] = f"{temp_dict[Data_types.first_name]}; {temp_dict[Data_types.second_name]}; {temp_dict[Data_types.phone_number]}; {temp_dict[Data_types.adress]}\n"
+                if temp_dict[Data_types.first_name] != None:
+                    name = temp_dict[Data_types.first_name]
+                else:
+                    name = temp_list[0]
+                if temp_dict[Data_types.second_name] != None:
+                    surname = temp_dict[Data_types.second_name]
+                else:
+                    surname = temp_list[1]
+                if temp_dict[Data_types.phone_number] != None:
+                    phone = temp_dict[Data_types.phone_number]
+                else:
+                    phone = temp_list[2]
+                if temp_dict[Data_types.adress] != None:
+                    adress = temp_dict[Data_types.adress]
+                else:
+                    adress = temp_list[3]
+
+                data_second_list[i] = f"{name}; {surname}; {phone}; {adress}"
 
     with open(path_to_second, "w", encoding="utf-8") as f:
         [f.write(data_second_list[i]) for i in range(len(data_second_list))]
