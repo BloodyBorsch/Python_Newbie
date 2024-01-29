@@ -46,18 +46,18 @@ def print_data():
         j = 0
         for i in range(len(data_first)):
             if data_first[i] == "\n" or i == len(data_first) - 1:
-                data_first_list.append(" ".join(data_first[j : i + 1]))
+                data_first_list.append("".join(data_first[j : i + 1]))
                 j = i
         print(" ".join(data_first_list))
 
     print(f"Вывожу данные из 2 файла: \n")
     with open(path_to_second, "r", encoding="utf-8") as f:
         data_second = f.readlines()
-        print(*data_second)
+        print("".join(data_second))
 
 
 def edit_data():
-    data_choose = int(input("Выберите файл 1 или 2: "))
+    data_choose = int(input("Выберите файл для редактирования 1 или 2: "))
 
     match data_choose:
         case 1:
@@ -70,17 +70,34 @@ def edit_data():
 
 
 def erase_data():
-    data_choose = int(input("Выберите файл 1 или 2: "))
+    data_choose = int(input("Выберите файл для удаления 1 или 2: "))
+    data_delition = int(
+        input("Полностью удалить данные - 1 или удалить только учетную запись - 2: ")
+    )
 
-    match data_choose:
+    match data_delition:
         case 1:
-            with open(path_to_first, "w", encoding="utf-8") as f:
-                f.close()
+            match data_choose:
+                case 1:
+                    with open(path_to_first, "w", encoding="utf-8") as f:
+                        f.close()
+                case 2:
+                    with open(path_to_second, "w", encoding="utf-8") as f:
+                        f.close()
+                case _:
+                    print(f"Нет такого файла для удаления\n" "Введите заново")
+                    erase_data()
         case 2:
-            with open(path_to_second, "w", encoding="utf-8") as f:
-                f.close()
+            match data_choose:
+                case 1:
+                    edit_column_data(True)
+                case 2:
+                    edit_rows_data(True)
+                case _:
+                    print(f"Нет такого файла для удаления\n" "Введите заново")
+                    erase_data()
         case _:
-            print(f"Нет такого файла для удаления\n" "Введите заново")
+            print(f"Нет такого способа удаления\n" "Введите заново")
             erase_data()
 
 
@@ -92,7 +109,7 @@ def create_data(num):
         return data
 
 
-def edit_column_data():
+def edit_column_data(delition=False):
     number_find = False
 
     what_to_edit = input("Введите номер телефона абонента: ")
@@ -106,28 +123,41 @@ def edit_column_data():
         for i in range(len(data_first_list)):
             if what_to_edit in data_first_list[i]:
                 number_find = True
-                print(f"Меняем данные в: {data_first_list[i - 2 : i + 2]}")
-                temp_dict = input_data(False)
-                if temp_dict[Data_types.first_name] != None:
-                    data_first_list[i - 2] = f"{temp_dict[Data_types.first_name]}\n"
-                if temp_dict[Data_types.second_name] != None:
-                    data_first_list[i - 1] = f"{temp_dict[Data_types.second_name]}\n"
-                if temp_dict[Data_types.phone_number] != None:
-                    data_first_list[i] = f"{temp_dict[Data_types.phone_number]}\n"
-                if temp_dict[Data_types.adress] != None:
-                    data_first_list[i + 1] = f"{temp_dict[Data_types.adress]}\n"
 
-        if number_find:
-            print(" ".join(data_first_list))
-        else:
+                if not delition:
+                    print(f"Меняем данные в: ")
+                    print("".join(data_first_list[i - 2 : i + 2]))
+
+                    temp_dict = input_data(False)
+
+                    if temp_dict[Data_types.first_name] != None:
+                        data_first_list[i - 2] = f"{temp_dict[Data_types.first_name]}\n"
+                    if temp_dict[Data_types.second_name] != None:
+                        data_first_list[
+                            i - 1
+                        ] = f"{temp_dict[Data_types.second_name]}\n"
+                    if temp_dict[Data_types.phone_number] != None:
+                        data_first_list[i] = f"{temp_dict[Data_types.phone_number]}\n"
+                    if temp_dict[Data_types.adress] != None:
+                        data_first_list[i + 1] = f"{temp_dict[Data_types.adress]}\n"
+                else:
+                    print(f"Удаляем данные в: ")
+                    print("".join(data_first_list[i - 2 : i + 2]))
+                    del data_first_list[i - 2 : i + 4]
+                    break
+
+        if not number_find:
             print(f"Нет такого телефона!")
             edit_data()
+            return
 
     with open(path_to_first, "w", encoding="utf-8") as f:
         [f.write(data_first_list[i]) for i in range(len(data_first_list))]
 
 
-def edit_rows_data():
+def edit_rows_data(delition=False):
+    number_find = False
+
     what_to_edit = input("Введите номер телефона абонента: ")
 
     with open(path_to_second, "r", encoding="utf-8") as f:
@@ -138,31 +168,42 @@ def edit_rows_data():
 
         for i in range(len(data_second_list)):
             if what_to_edit in data_second_list[i]:
-                print(f"Меняем данные в: {data_second_list[i]}")
+                number_find = True
 
-                # temp_list = (data_second_list[i]).split(";")
-                temp_list = re.split(";| |\n", data_second_list[i])
-                [print(x) for x in temp_list]
+                if not delition:
+                    print(f"Меняем данные в: {data_second_list[i]}")
 
-                temp_dict = input_data(False)
-                if temp_dict[Data_types.first_name] != None:
-                    name = temp_dict[Data_types.first_name]
-                else:
-                    name = temp_list[0]
-                if temp_dict[Data_types.second_name] != None:
-                    surname = temp_dict[Data_types.second_name]
-                else:
-                    surname = temp_list[1]
-                if temp_dict[Data_types.phone_number] != None:
-                    phone = temp_dict[Data_types.phone_number]
-                else:
-                    phone = temp_list[2]
-                if temp_dict[Data_types.adress] != None:
-                    adress = temp_dict[Data_types.adress]
-                else:
-                    adress = temp_list[3]
+                    temp_list = re.split(";|\n", data_second_list[i].replace(" ", ""))
+                    del temp_list[4]
 
-                data_second_list[i] = f"{name}; {surname}; {phone}; {adress}"
+                    temp_dict = input_data(False)
+                    if temp_dict[Data_types.first_name] != None:
+                        name = temp_dict[Data_types.first_name]
+                    else:
+                        name = temp_list[0]
+                    if temp_dict[Data_types.second_name] != None:
+                        surname = temp_dict[Data_types.second_name]
+                    else:
+                        surname = temp_list[1]
+                    if temp_dict[Data_types.phone_number] != None:
+                        phone = temp_dict[Data_types.phone_number]
+                    else:
+                        phone = temp_list[2]
+                    if temp_dict[Data_types.adress] != None:
+                        adress = temp_dict[Data_types.adress]
+                    else:
+                        adress = temp_list[3]
+
+                    data_second_list[i] = f"{name}; {surname}; {phone}; {adress}\n"
+                else:
+                    print(f"Удаляем данные в: {data_second_list[i]}")
+                    del data_second_list[i : i + 2]
+                    break
+
+        if not number_find:
+            print(f"Нет такого телефона!")
+            edit_data()
+            return
 
     with open(path_to_second, "w", encoding="utf-8") as f:
         [f.write(data_second_list[i]) for i in range(len(data_second_list))]
