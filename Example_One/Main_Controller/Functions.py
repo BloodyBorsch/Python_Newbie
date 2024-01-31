@@ -22,7 +22,7 @@ def input_data(new_data=True):
     )
 
     if new_data:
-        var = int(
+        var, go_next = int_parser(
             input(
                 f"В каком формате записать данные \n\n"
                 f"1 Вариант: \n"
@@ -32,6 +32,11 @@ def input_data(new_data=True):
                 f"Выберите вариант: "
             )
         )
+
+        if not go_next:
+            print(var)
+            input_data()
+            return
 
         data_variant(var, account)
     else:
@@ -57,7 +62,12 @@ def print_data():
 
 
 def edit_data():
-    data_choose = int(input("Выберите файл для редактирования 1 или 2: "))
+    data_choose, go_next = int_parser(input("Выберите файл для редактирования 1 или 2: "))
+
+    if not go_next:
+        print(data_choose)
+        edit_data()
+        return
 
     match data_choose:
         case 1:
@@ -70,10 +80,21 @@ def edit_data():
 
 
 def erase_data():
-    data_choose = int(input("Выберите файл для удаления 1 или 2: "))
-    data_delition = int(
+    data_choose, go_next = int_parser(input("Выберите файл для удаления 1 или 2: "))
+    
+    if not go_next:
+        print(data_choose)
+        erase_data()
+        return
+    
+    data_delition, go_next2 = int_parser(
         input("Полностью удалить данные - 1 или удалить только учетную запись - 2: ")
     )
+    
+    if not go_next2:
+        print(data_delition)
+        erase_data()
+        return
 
     match data_delition:
         case 1:
@@ -102,7 +123,11 @@ def erase_data():
 
 
 def create_data(num):
-    data = input(data_collector(num))
+    data, go_next = int_parser(input(data_collector(num)))
+    if not go_next:
+        print(data)
+        return "*"
+
     if data == "*":
         return
     else:
@@ -111,8 +136,12 @@ def create_data(num):
 
 def edit_column_data(delition=False):
     number_find = False
+    what_to_edit, go_next = int_parser(input("Введите номер телефона абонента: "))
 
-    what_to_edit = input("Введите номер телефона абонента: ")
+    if not go_next:
+        print(what_to_edit)
+        edit_data()
+        return
 
     with open(path_to_first, "r", encoding="utf-8") as f:
         data_first = f.readlines()
@@ -157,8 +186,12 @@ def edit_column_data(delition=False):
 
 def edit_rows_data(delition=False):
     number_find = False
-
-    what_to_edit = input("Введите номер телефона абонента: ")
+    what_to_edit, go_next = int_parser(input("Введите номер телефона абонента: "))
+    
+    if not go_next:
+        print(what_to_edit)
+        edit_data()
+        return
 
     with open(path_to_second, "r", encoding="utf-8") as f:
         data_second = f.readlines()
@@ -245,6 +278,13 @@ def data_empty_check(test_list):
     if len(test_list) < 1:
         print(f"Файл пустой")
         return edit_data()
+
+
+def int_parser(value):
+    try:
+        return int(value), True
+    except:
+        return "Вводить можно только цифры", False
 
 
 class Data_types(Enum):
